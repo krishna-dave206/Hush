@@ -1,0 +1,16 @@
+export type ScreenType = 
+  | 'SPLASH' 
+  | 'ONBOARDING' 
+  | 'AUTH' 
+  | 'PROFILE_SETUP' 
+  | 'HOME' 
+  | 'VENUE_DETAIL' 
+  | 'CHAT' 
+  | 'QR_SCANNER' 
+  | 'SETTINGS' 
+  | 'CHAT_LIST'
+  | 'EDIT_PROFILE'
+  | 'SAVED_VENUES'
+  | 'NOTIFICATIONS'
+  | 'ADMIN'
+  | 'ACTIVE_USERS';

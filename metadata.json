@@ -1,0 +1,6 @@
+{
+  "name": "CoolCliq",
+  "description": "Anonymously meet strangers at the same physical location. Scan, connect, and interact safely.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": []
+}

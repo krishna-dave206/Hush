@@ -1,0 +1,94 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Application user profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "handle": { "type": "string" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "interests": { "type": "array", "items": { "type": "string" } },
+        "photoURL": { "type": "string" },
+        "isVerified": { "type": "boolean" },
+        "savedVenues": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "handle", "age"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "type": { "type": "string", "enum": ["message", "venue_event", "system"] },
+        "read": { "type": "boolean" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "data": { "type": "object" }
+      }
+    },
+    "Venue": {
+      "title": "Venue",
+      "description": "Physical location with a QR code",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "location": { "type": "object", "properties": { "lat": { "type": "number" }, "lng": { "type": "number" } } },
+        "radius": { "type": "number" },
+        "activeCount": { "type": "number" },
+        "qrCode": { "type": "string" }
+      }
+    },
+    "Session": {
+       "title": "ActiveSession",
+       "description": "User presence at a venue",
+       "type": "object",
+       "properties": {
+         "id": { "type": "string" },
+         "userId": { "type": "string" },
+         "venueId": { "type": "string" },
+         "status": { "type": "string", "enum": ["ACTIVE", "EXPIRED"] },
+         "expiresAt": { "type": "string", "format": "date-time" }
+       }
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chatId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "type": { "type": "string", "enum": ["text", "reveal_request", "reveal_confirmed"] }
+      }
+    },
+    "Chat": {
+      "title": "Chat",
+      "description": "1-to-1 conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participants": { "type": "array", "items": { "type": "string" } },
+        "lastMessage": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "venueId": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users": { "schema": "User", "description": "User profiles" },
+    "venues": { "schema": "Venue", "description": "Venues list" },
+    "sessions": { "schema": "Session", "description": "Active user presence" },
+    "chats": { "schema": "Chat", "description": "Conversations" },
+    "chats/{chatId}/messages": { "schema": "Message", "description": "Messages within a chat" },
+    "users/{userId}/notifications": { "schema": "Notification", "description": "User notifications" }
+  }
+}
