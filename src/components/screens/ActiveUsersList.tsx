@@ -27,7 +27,7 @@ export const ActiveUsersList: React.FC<{ venueId?: string; navigateTo: (screen: 
           <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
           <Input 
             placeholder="Search handle or venue..." 
-            className="h-14 pl-12 bg-zinc-900 border-white/5 rounded-2xl focus:ring-indigo-500/20 text-xs font-bold uppercase tracking-widest placeholder:text-zinc-600 shadow-inner"
+            className="h-14 pl-12 bg-zinc-900 border-white/5 rounded-2xl focus:ring-violet-500/20 text-xs font-bold uppercase tracking-widest placeholder:text-zinc-600 shadow-inner"
           />
         </div>
       </div>
@@ -41,30 +41,30 @@ export const ActiveUsersList: React.FC<{ venueId?: string; navigateTo: (screen: 
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05 }}
               onClick={() => navigateTo('CHAT', { recipientId: u.id })}
-              className="group glass-dark p-4 rounded-[2rem] flex items-center justify-between transition-all hover:bg-zinc-900 hover:border-indigo-500/20 active:scale-98"
+              className="group glass-dark p-4 rounded-[2rem] flex items-center justify-between transition-all hover:bg-zinc-900 hover:border-violet-500/20 active:scale-98"
             >
               <div className="flex items-center gap-4">
                 <div className="relative">
                     <Avatar className="w-16 h-16 rounded-[1.5rem] border border-white/10 bg-zinc-800 shadow-xl">
                         <AvatarFallback className="text-zinc-500 font-bold text-xl font-display">{u.handle[1].toUpperCase()}</AvatarFallback>
                     </Avatar>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 border-4 border-zinc-950 rounded-full" />
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-violet-500 border-4 border-zinc-950 rounded-full" />
                 </div>
                 <div>
                     <div className="flex items-center gap-2 mb-1">
                         <h4 className="font-bold text-base tracking-tight font-display">{u.handle}</h4>
-                        <span className="text-[8px] font-black uppercase tracking-widest text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-md">{u.gender}</span>
+                        <span className="text-[8px] font-black uppercase tracking-widest text-violet-400 bg-violet-500/10 px-2 py-0.5 rounded-md">{u.gender}</span>
                     </div>
                     <div className="flex flex-col gap-1">
                         <p className="text-[10px] text-zinc-500 font-bold flex items-center gap-1.5 uppercase tracking-widest">
-                            <MapPin className="w-2.5 h-2.5 text-indigo-500" />
+                            <MapPin className="w-2.5 h-2.5 text-violet-500" />
                             {u.venue}
                         </p>
                         <p className="text-[9px] text-zinc-600 font-black uppercase tracking-[0.2em]">{u.activity}</p>
                     </div>
                 </div>
               </div>
-              <div className="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100">
+              <div className="w-12 h-12 bg-violet-500/10 text-violet-400 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all scale-90 group-hover:scale-100">
                 <MessageSquare className="w-5 h-5" />
               </div>
             </motion.div>

@@ -152,14 +152,14 @@ export const AuthScreen: React.FC = () => {
   return (
     <div className="h-screen flex flex-col bg-zinc-950 px-8 pt-24 font-sans overflow-hidden">
       <div className="relative mb-16">
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full" />
+        <div className="absolute -top-20 -left-20 w-64 h-64 bg-violet-500/10 blur-[100px] rounded-full" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative"
         >
-          <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center border border-emerald-500/20 mb-8">
-            <ShieldCheck className="w-8 h-8 text-emerald-500" />
+          <div className="w-16 h-16 bg-violet-500/10 rounded-2xl flex items-center justify-center border border-violet-500/20 mb-8">
+            <ShieldCheck className="w-8 h-8 text-violet-500" />
           </div>
           <h1 className="text-5xl font-bold tracking-tight mb-4 font-display text-glow">Join the Cliq</h1>
           <p className="text-zinc-500 text-lg font-medium leading-relaxed max-w-[280px]">
@@ -181,11 +181,11 @@ export const AuthScreen: React.FC = () => {
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 px-2">Phone Number</label>
               <div className="flex gap-2">
                 <div className="relative group shrink-0">
-                  <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-600 group-focus-within:text-emerald-500" />
+                  <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-600 group-focus-within:text-violet-500" />
                   <select 
                     value={countryCode}
                     onChange={(e) => setCountryCode(e.target.value)}
-                    className="h-16 pl-10 pr-4 bg-zinc-900 border border-white/5 rounded-3xl text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="h-16 pl-10 pr-4 bg-zinc-900 border border-white/5 rounded-3xl text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-violet-500/20"
                   >
                     {COUNTRY_CODES.map(c => (
                       <option key={c.code} value={c.code}>{c.flag} {c.code}</option>
@@ -193,13 +193,13 @@ export const AuthScreen: React.FC = () => {
                   </select>
                 </div>
                 <div className="relative group flex-1">
-                  <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 transition-colors group-focus-within:text-emerald-500" />
+                  <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 transition-colors group-focus-within:text-violet-500" />
                   <Input
                     type="tel"
                     placeholder="555 0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold tracking-tight focus:ring-emerald-500/20 placeholder:text-zinc-800"
+                    className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold tracking-tight focus:ring-violet-500/20 placeholder:text-zinc-800"
                   />
                 </div>
               </div>
@@ -207,7 +207,7 @@ export const AuthScreen: React.FC = () => {
             <Button 
               onClick={handleSendOTP}
               disabled={loading}
-              className="w-full h-16 bg-emerald-600 hover:bg-emerald-700 text-white rounded-3xl text-base font-black uppercase tracking-widest shadow-2xl shadow-emerald-900/40 border border-white/10 active:scale-95 transition-all"
+              className="w-full h-16 bg-violet-600 hover:bg-violet-700 text-white rounded-3xl text-base font-black uppercase tracking-widest shadow-2xl shadow-violet-900/40 border border-white/10 active:scale-95 transition-all"
             >
               {loading ? "Initializing..." : "Send Verification"}
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -224,7 +224,7 @@ export const AuthScreen: React.FC = () => {
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 px-2">Verification Code</label>
               <div className="relative group">
-                <CheckCircle2 className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 transition-colors group-focus-within:text-emerald-500" />
+                <CheckCircle2 className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 transition-colors group-focus-within:text-violet-500" />
                 <Input
                   type="text"
                   inputMode="numeric"
@@ -232,20 +232,20 @@ export const AuthScreen: React.FC = () => {
                   placeholder="Enter 6-digit code"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-xl font-bold tracking-[0.4em] focus:ring-emerald-500/20 placeholder:text-zinc-800 placeholder:tracking-normal"
+                  className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-xl font-bold tracking-[0.4em] focus:ring-violet-500/20 placeholder:text-zinc-800 placeholder:tracking-normal"
                 />
               </div>
             </div>
             <Button 
               onClick={handleVerifyOTP}
               disabled={loading}
-              className="w-full h-16 bg-emerald-600 hover:bg-emerald-700 text-white rounded-3xl text-base font-black uppercase tracking-widest shadow-2xl shadow-emerald-900/40 border border-white/10 active:scale-95 transition-all"
+              className="w-full h-16 bg-violet-600 hover:bg-violet-700 text-white rounded-3xl text-base font-black uppercase tracking-widest shadow-2xl shadow-violet-900/40 border border-white/10 active:scale-95 transition-all"
             >
               {loading ? "Verifying..." : "Confirm & Enter"}
             </Button>
             <button 
               onClick={() => setStep('phone')}
-              className="w-full text-center text-zinc-600 text-[10px] font-black uppercase tracking-[0.2em] hover:text-emerald-500 transition-colors"
+              className="w-full text-center text-zinc-600 text-[10px] font-black uppercase tracking-[0.2em] hover:text-violet-500 transition-colors"
             >
               Wrong number? Try again
             </button>
@@ -258,7 +258,7 @@ export const AuthScreen: React.FC = () => {
                   setStep('otp');
                   toast.info("Demo mode active. Use code 123456", { duration: 10000 });
                 }}
-                className="text-emerald-500/50 hover:text-emerald-500 text-[10px] font-black uppercase tracking-[0.2em] underline underline-offset-4 transition-colors"
+                className="text-violet-500/50 hover:text-violet-500 text-[10px] font-black uppercase tracking-[0.2em] underline underline-offset-4 transition-colors"
               >
                 Bypass verification for testing
               </button>

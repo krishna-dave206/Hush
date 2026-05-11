@@ -3,6 +3,7 @@ export type ScreenType =
   | 'ONBOARDING' 
   | 'AUTH' 
   | 'PROFILE_SETUP' 
+  | 'MAP'
   | 'HOME' 
   | 'VENUE_DETAIL' 
   | 'CHAT' 

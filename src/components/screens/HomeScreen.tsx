@@ -71,11 +71,18 @@ const MOCK_VENUES: Venue[] = [
   }
 ];
 
-export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: any) => void }> = ({ navigateTo }) => {
+export const HomeScreen: React.FC<{ 
+  navigateTo: (screen: ScreenType, params?: any) => void,
+  initialMode?: 'DISCOVERY' | 'MAP'
+}> = ({ navigateTo, initialMode = 'DISCOVERY' }) => {
   const [venues, setVenues] = useState<Venue[]>(MOCK_VENUES);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null);
-  const [viewMode, setViewMode] = useState<'DISCOVERY' | 'MAP'>('DISCOVERY');
+  const [viewMode, setViewMode] = useState<'DISCOVERY' | 'MAP'>(initialMode);
+
+  useEffect(() => {
+    setViewMode(initialMode);
+  }, [initialMode]);
   const [showGuide, setShowGuide] = useState(() => {
     return !localStorage.getItem('cliq_home_guide_seen');
   });
@@ -90,15 +97,15 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
   if (!hasValidKey) {
     return (
       <div className="h-screen flex flex-col items-center justify-center p-8 text-center bg-zinc-950 px-12">
-        <div className="w-24 h-24 bg-emerald-500/10 rounded-[2.5rem] flex items-center justify-center mb-8 border border-emerald-500/20">
-          <MapPin className="w-10 h-10 text-emerald-500 animate-bounce" />
+        <div className="w-24 h-24 bg-violet-500/10 rounded-[2.5rem] flex items-center justify-center mb-8 border border-violet-500/20">
+          <MapPin className="w-10 h-10 text-violet-500 animate-bounce" />
         </div>
         <h2 className="text-3xl font-bold mb-4 tracking-tight font-display">System Offline</h2>
         <p className="text-zinc-500 text-sm mb-10 leading-relaxed font-medium">Cliq requires an encrypted Maps Protocol Key to establish local presence. Please add your credentials.</p>
         
         <div className="w-full space-y-4 text-left glass-dark p-8 rounded-[2.5rem] border border-white/5 relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 w-32 h-32 bg-emerald-500/5 blur-3xl rounded-full" />
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/50 mb-6">Security Setup</p>
+          <div className="absolute -top-10 -right-10 w-32 h-32 bg-violet-500/5 blur-3xl rounded-full" />
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-violet-500/50 mb-6">Security Setup</p>
           <div className="space-y-4 relative z-10">
             <div className="flex items-center gap-4">
               <div className="w-8 h-8 rounded-xl bg-zinc-900 flex items-center justify-center text-[10px] font-black text-zinc-500 border border-white/5">01</div>
@@ -110,7 +117,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
             </div>
             <div className="flex items-center gap-4">
               <div className="w-8 h-8 rounded-xl bg-zinc-900 flex items-center justify-center text-[10px] font-black text-zinc-500 border border-white/5">03</div>
-              <p className="text-xs text-zinc-400 font-medium">Add <span className="text-emerald-500 font-bold">GOOGLE_MAPS_PLATFORM_KEY</span></p>
+              <p className="text-xs text-zinc-400 font-medium">Add <span className="text-violet-500 font-bold">GOOGLE_MAPS_PLATFORM_KEY</span></p>
             </div>
           </div>
         </div>
@@ -138,9 +145,9 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
             >
               <div className="space-y-4">
                 <div className="relative w-24 h-24 mx-auto">
-                   <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full animate-pulse" />
-                   <div className="relative w-24 h-24 bg-emerald-500/10 rounded-[2.5rem] flex items-center justify-center border border-emerald-500/20">
-                     <Zap className="w-10 h-10 text-emerald-500" />
+                   <div className="absolute inset-0 bg-violet-500/20 blur-2xl rounded-full animate-pulse" />
+                   <div className="relative w-24 h-24 bg-violet-500/10 rounded-[2.5rem] flex items-center justify-center border border-violet-500/20">
+                     <Zap className="w-10 h-10 text-violet-500" />
                    </div>
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight font-display text-white">Welcome to Cliq</h2>
@@ -151,8 +158,8 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
 
               <div className="space-y-6 pt-4">
                 <div className="flex items-start gap-4 text-left glass p-4 rounded-2xl">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0">
-                    <Users className="w-5 h-5 text-emerald-400" />
+                  <div className="w-10 h-10 rounded-xl bg-violet-500/20 flex items-center justify-center shrink-0">
+                    <Users className="w-5 h-5 text-violet-400" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-white">Live Presence</h4>
@@ -160,8 +167,8 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                   </div>
                 </div>
                 <div className="flex items-start gap-4 text-left glass p-4 rounded-2xl">
-                  <div className="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-5 h-5 text-teal-400" />
+                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-white">Safe & Anonymous</h4>
@@ -172,7 +179,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
 
               <Button 
                 onClick={dismissGuide}
-                className="w-full h-16 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl font-black text-[12px] uppercase tracking-[0.2em] shadow-2xl shadow-emerald-600/40 border border-white/10"
+                className="w-full h-16 bg-violet-600 hover:bg-violet-700 text-white rounded-2xl font-black text-[12px] uppercase tracking-[0.2em] shadow-2xl shadow-violet-600/40 border border-white/10"
               >
                 Enter Discovery
               </Button>
@@ -195,7 +202,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
               <div>
                 <h1 className="text-4xl font-bold tracking-tight text-white font-display text-glow">Discovery</h1>
                 <div className="flex items-center gap-2 mt-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500">1,204 People Nearby</span>
                 </div>
               </div>
@@ -208,19 +215,19 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
               <div className="space-y-10 py-8">
                 {/* Feature Card */}
                 <section>
-                  <h3 className="px-2 text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-4">Featured Spot</h3>
+                  <h3 className="px-2 text-[11px] font-black text-violet-400 uppercase tracking-[0.2em] mb-4">Featured Spot</h3>
                   {venues[0] && (
                     <motion.div 
                       whileTap={{ scale: 0.98 }}
                       onClick={() => navigateTo('VENUE_DETAIL', { venueId: venues[0].id })}
                       className="group relative h-80 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl transition-all"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/40 via-zinc-950 to-zinc-950" />
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.2)_0%,transparent_70%)]" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-violet-900/40 via-zinc-950 to-zinc-950" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.2)_0%,transparent_70%)]" />
                       
                       <div className="absolute top-6 right-6">
                         <Badge className="bg-white/10 backdrop-blur-xl text-white border-white/10 px-4 py-2 rounded-2xl flex items-center gap-2 font-black text-[10px] uppercase tracking-widest">
-                          <Zap className="w-3 h-3 text-emerald-400 fill-emerald-400" />
+                          <Zap className="w-3 h-3 text-violet-400 fill-violet-400" />
                           Most Active
                         </Badge>
                       </div>
@@ -236,7 +243,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                                 {String.fromCharCode(64 + i)}
                               </div>
                             ))}
-                            <div className="w-10 h-10 rounded-2xl border-2 border-zinc-950 bg-emerald-600 flex items-center justify-center text-[10px] font-black text-white">
+                            <div className="w-10 h-10 rounded-2xl border-2 border-zinc-950 bg-violet-600 flex items-center justify-center text-[10px] font-black text-white">
                               +{venues[0].activeCount}
                             </div>
                           </div>
@@ -251,15 +258,15 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
 
                 {/* Map Preview Launcher */}
                 <section>
-                  <h3 className="px-2 text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-4">Activity Map</h3>
+                  <h3 className="px-2 text-[11px] font-black text-violet-400 uppercase tracking-[0.2em] mb-4">Activity Map</h3>
                   <div 
                     onClick={() => setViewMode('MAP')}
                     className="relative h-44 rounded-[2.5rem] overflow-hidden glass-dark border border-white/10 group cursor-pointer"
                   >
-                    <div className="absolute inset-0 bg-emerald-500/5 transition-opacity group-hover:opacity-20" />
+                    <div className="absolute inset-0 bg-violet-500/5 transition-opacity group-hover:opacity-20" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
                       <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                        <MapPin className="w-7 h-7 text-emerald-400" />
+                        <MapPin className="w-7 h-7 text-violet-400" />
                       </div>
                       <h4 className="text-lg font-bold text-white font-display">Explore Live Hubs</h4>
                       <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mt-1">Switch to map view</p>
@@ -270,7 +277,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                 {/* Trending List */}
                 <section className="pb-12">
                   <div className="flex items-center justify-between px-2 mb-6">
-                    <h3 className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em]">Trending Spots</h3>
+                    <h3 className="text-[11px] font-black text-violet-400 uppercase tracking-[0.2em]">Trending Spots</h3>
                     <button className="text-[10px] font-black text-zinc-500 uppercase tracking-widest hover:text-white transition-colors">See All</button>
                   </div>
                   <div className="space-y-4">
@@ -280,21 +287,21 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                         onClick={() => navigateTo('VENUE_DETAIL', { venueId: v.id })}
                         className="group glass-dark p-5 rounded-[2.5rem] flex items-center gap-5 hover:bg-zinc-900 transition-all cursor-pointer"
                       >
-                         <div className="w-16 h-16 bg-zinc-800 rounded-3xl flex items-center justify-center border border-white/5 shrink-0 group-hover:border-emerald-500/30">
-                           <Zap className="w-8 h-8 text-emerald-500/20 fill-emerald-500/10" />
+                         <div className="w-16 h-16 bg-zinc-800 rounded-3xl flex items-center justify-center border border-white/5 shrink-0 group-hover:border-violet-500/30">
+                           <Zap className="w-8 h-8 text-violet-500/20 fill-violet-500/10" />
                          </div>
                          <div className="flex-1 min-w-0">
                            <h4 className="font-bold text-lg text-white font-display truncate mb-1">{v.name}</h4>
                            <div className="flex items-center gap-3">
                              <div className="flex items-center gap-1.5">
-                               <Users className="w-3.5 h-3.5 text-emerald-500" />
+                               <Users className="w-3.5 h-3.5 text-violet-500" />
                                <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">{v.activeCount} Live</span>
                              </div>
                              <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
                              <span className="text-[9px] font-black text-zinc-700 uppercase tracking-widest">Nearby</span>
                            </div>
                          </div>
-                         <ChevronRight className="w-5 h-5 text-zinc-700 group-hover:text-emerald-400 transition-colors" />
+                         <ChevronRight className="w-5 h-5 text-zinc-700 group-hover:text-violet-400 transition-colors" />
                       </motion.div>
                     ))}
                   </div>
@@ -344,8 +351,8 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                         onClick={() => setSelectedVenue(venue)}
                       >
                         <div className="relative group cursor-pointer">
-                          <div className="absolute -inset-4 bg-emerald-500/20 blur-xl rounded-full scale-0 group-hover:scale-100 transition-transform duration-500" />
-                          <div className="relative bg-emerald-600 p-2.5 rounded-2xl border-2 border-white shadow-lg transition-transform group-hover:scale-110 active:scale-95">
+                          <div className="absolute -inset-4 bg-violet-500/20 blur-xl rounded-full scale-0 group-hover:scale-100 transition-transform duration-500" />
+                          <div className="relative bg-violet-600 p-2.5 rounded-2xl border-2 border-white shadow-lg transition-transform group-hover:scale-110 active:scale-95">
                             <Zap className="w-5 h-5 text-white fill-white" />
                           </div>
                         </div>
@@ -371,8 +378,8 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
                         <h3 className="text-2xl font-bold tracking-tight font-display text-glow">{selectedVenue.name}</h3>
                         <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.2em] mt-1">{selectedVenue.address}</p>
                       </div>
-                      <Badge className="bg-emerald-500/10 text-emerald-400 border-none px-4 py-1.5 rounded-full flex items-center gap-2 font-black text-[10px] uppercase tracking-widest">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                      <Badge className="bg-violet-500/10 text-violet-400 border-none px-4 py-1.5 rounded-full flex items-center gap-2 font-black text-[10px] uppercase tracking-widest">
+                        <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
                         {selectedVenue.activeCount} live
                       </Badge>
                     </div>
@@ -398,7 +405,7 @@ export const HomeScreen: React.FC<{ navigateTo: (screen: ScreenType, params?: an
         )}
       </AnimatePresence>
 
-      <BottomNav currentScreen="HOME" navigateTo={navigateTo} />
+      <BottomNav currentScreen={viewMode === 'MAP' ? 'MAP' : 'HOME'} navigateTo={navigateTo} />
     </div>
   );
 };

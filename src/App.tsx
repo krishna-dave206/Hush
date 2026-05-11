@@ -53,6 +53,7 @@ const MainApp = () => {
       case 'AUTH': return <AuthScreen />;
       case 'PROFILE_SETUP': return <ProfileSetup />;
       case 'HOME': return <HomeScreen navigateTo={navigateTo} />;
+      case 'MAP': return <HomeScreen navigateTo={navigateTo} initialMode="MAP" />;
       case 'VENUE_DETAIL': return <VenueDetail venueId={screenParams?.venueId} navigateTo={navigateTo} />;
       case 'CHAT': return <ChatScreen chatId={screenParams?.chatId} recipientId={screenParams?.recipientId} navigateTo={navigateTo} />;
       case 'QR_SCANNER': return <QRScannerScreen navigateTo={navigateTo} />;
@@ -68,7 +69,7 @@ const MainApp = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-zinc-950 text-white font-sans selection:bg-violet-500/30">
       {renderScreen()}
       <Toaster position="top-center" expand={false} richColors />
     </div>

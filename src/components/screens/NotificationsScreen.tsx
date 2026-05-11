@@ -81,9 +81,9 @@ export const NotificationsScreen: React.FC<{ navigateTo: (screen: ScreenType, pa
 
   const getIcon = (type: string) => {
     switch (type) {
-      case 'message': return <MessageSquare className="w-5 h-5 text-indigo-500" />;
-      case 'venue_event': return <MapPin className="w-5 h-5 text-emerald-500" />;
-      case 'system': return <Shield className="w-5 h-5 text-amber-500" />;
+      case 'message': return <MessageSquare className="w-5 h-5 text-cyan-500" />;
+      case 'venue_event': return <MapPin className="w-5 h-5 text-violet-500" />;
+      case 'system': return <Shield className="w-5 h-5 text-fuchsia-500" />;
       default: return <Bell className="w-5 h-5 text-zinc-500" />;
     }
   };
@@ -100,7 +100,7 @@ export const NotificationsScreen: React.FC<{ navigateTo: (screen: ScreenType, pa
       {notifications.some(n => !n.read) && (
         <button 
           onClick={markAllAsRead}
-          className="absolute top-8 right-8 h-12 px-6 bg-emerald-600/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-500 text-[10px] font-black uppercase tracking-widest hover:bg-emerald-600 transition-all hover:text-white"
+          className="absolute top-8 right-8 h-12 px-6 bg-violet-600/10 border border-violet-500/20 rounded-2xl flex items-center justify-center text-violet-500 text-[10px] font-black uppercase tracking-widest hover:bg-violet-600 transition-all hover:text-white"
         >
           Mark all read
         </button>
@@ -111,14 +111,14 @@ export const NotificationsScreen: React.FC<{ navigateTo: (screen: ScreenType, pa
         animate={{ opacity: 1, y: 0 }}
         className="mb-12"
       >
-        <span className="text-amber-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Communication Stream</span>
+        <span className="text-fuchsia-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Communication Stream</span>
         <h1 className="text-4xl font-bold tracking-tight mb-4 font-display text-glow">Notifications</h1>
         <p className="text-zinc-500 text-base font-medium leading-relaxed">Stay updated with the pulse of your urban network.</p>
       </motion.div>
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20 space-y-4">
-          <div className="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-fuchsia-500/20 border-t-fuchsia-500 rounded-full animate-spin" />
           <p className="text-zinc-600 font-black uppercase tracking-widest text-[10px]">Syncing alerts...</p>
         </div>
       ) : notifications.length === 0 ? (
@@ -144,11 +144,11 @@ export const NotificationsScreen: React.FC<{ navigateTo: (screen: ScreenType, pa
                 className={`group relative overflow-hidden p-6 rounded-[2rem] border transition-all ${
                   notif.read 
                     ? 'bg-zinc-900/20 border-white/5 opacity-60' 
-                    : 'bg-zinc-900 border-emerald-500/10 shadow-lg shadow-emerald-950/20'
+                    : 'bg-zinc-900 border-violet-500/10 shadow-lg shadow-violet-950/20'
                 }`}
               >
                 {!notif.read && (
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-emerald-500" />
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-violet-500" />
                 )}
                 
                 <div className="flex gap-5">
@@ -172,7 +172,7 @@ export const NotificationsScreen: React.FC<{ navigateTo: (screen: ScreenType, pa
                       {!notif.read && (
                         <button 
                           onClick={() => markAsRead(notif.id)}
-                          className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-500 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
+                          className="flex items-center gap-2 px-4 py-2 bg-violet-500/10 text-violet-500 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-violet-600 hover:text-white transition-all shadow-sm"
                         >
                           <Check className="w-3.5 h-3.5" />
                           Mark Read

@@ -72,12 +72,12 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
     <div className="min-h-screen bg-zinc-950 flex flex-col pb-24 font-sans">
       {/* Header Image / Pattern */}
       <div className="h-64 bg-zinc-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-zinc-950/40 to-zinc-950 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-500/20 via-zinc-950/40 to-zinc-950 z-0" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent z-0" />
         
         <div className="absolute top-12 left-6 right-6 flex items-center justify-between z-20">
-          <button onClick={() => navigateTo('HOME')} className="w-12 h-12 glass-emerald rounded-2xl flex items-center justify-center transition-all active:scale-95 group">
-            <ArrowLeft className="w-6 h-6 text-emerald-400 group-hover:text-white transition-colors" />
+          <button onClick={() => navigateTo('HOME')} className="w-12 h-12 glass-violet rounded-2xl flex items-center justify-center transition-all active:scale-95 group">
+            <ArrowLeft className="w-6 h-6 text-violet-400 group-hover:text-white transition-colors" />
           </button>
           <button 
             onClick={toggleSave}
@@ -89,13 +89,13 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
 
         <div className="absolute bottom-8 left-6 right-6 z-10 flex items-end justify-between">
           <div className="flex items-center gap-5">
-            <div className="w-16 h-16 bg-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-600/40 border border-white/10">
+            <div className="w-16 h-16 bg-violet-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-violet-600/40 border border-white/10">
               <Zap className="w-8 h-8 text-white fill-white animate-pulse" />
             </div>
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-glow mb-1 font-display">Blue Bottle Coffee</h1>
               <p className="text-zinc-400 text-[10px] font-black flex items-center gap-2 uppercase tracking-[0.2em] opacity-80">
-                <MapPin className="w-3.5 h-3.5 text-emerald-500" /> 
+                <MapPin className="w-3.5 h-3.5 text-violet-500" /> 
                 Market St • San Francisco
               </p>
             </div>
@@ -108,12 +108,12 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
           <div className="flex flex-col gap-4 mb-6">
             <div className="flex items-center justify-between">
               <TabsList className="bg-zinc-900/80 backdrop-blur-xl p-1.5 rounded-2xl border border-white/5 h-14 w-full max-w-[240px]">
-                <TabsTrigger value="active" className="rounded-xl h-full flex-1 data-[state=active]:bg-emerald-600 data-[state=active]:text-white font-bold text-[10px] uppercase tracking-widest transition-all">Live ({filteredUsers.length})</TabsTrigger>
-                <TabsTrigger value="info" className="rounded-xl h-full flex-1 data-[state=active]:bg-emerald-600 data-[state=active]:text-white font-bold text-[10px] uppercase tracking-widest transition-all">About</TabsTrigger>
+                <TabsTrigger value="active" className="rounded-xl h-full flex-1 data-[state=active]:bg-violet-600 data-[state=active]:text-white font-bold text-[10px] uppercase tracking-widest transition-all">Live ({filteredUsers.length})</TabsTrigger>
+                <TabsTrigger value="info" className="rounded-xl h-full flex-1 data-[state=active]:bg-violet-600 data-[state=active]:text-white font-bold text-[10px] uppercase tracking-widest transition-all">About</TabsTrigger>
               </TabsList>
               <button 
                 onClick={() => setShowFilters(!showFilters)}
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${showFilters ? 'bg-emerald-600 text-white shadow-lg' : 'glass-dark text-zinc-400 hover:text-white'}`}
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${showFilters ? 'bg-violet-600 text-white shadow-lg' : 'glass-dark text-zinc-400 hover:text-white'}`}
               >
                 <Filter className="w-5 h-5" />
               </button>
@@ -141,7 +141,7 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
                       <button
                         key={g}
                         onClick={() => setGenderFilter(g as any)}
-                        className={`px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border ${genderFilter === g ? 'bg-emerald-600 border-emerald-500 text-white' : 'bg-zinc-900 border-white/5 text-zinc-500 hover:text-zinc-300'}`}
+                        className={`px-5 py-2 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all border ${genderFilter === g ? 'bg-violet-600 border-violet-500 text-white' : 'bg-zinc-900 border-white/5 text-zinc-500 hover:text-zinc-300'}`}
                       >
                         {g}
                       </button>
@@ -163,20 +163,20 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
                     transition={{ delay: i * 0.05 }}
                     onClick={() => handleUserClick(user.id)}
                     className={`group relative glass-dark rounded-[2.5rem] p-5 transition-all active:scale-98 overflow-hidden flex items-center gap-5 ${
-                      !isVerified ? 'opacity-80' : 'hover:bg-zinc-900 hover:border-emerald-500/30'
+                      !isVerified ? 'opacity-80' : 'hover:bg-zinc-900 hover:border-violet-500/30'
                     }`}
                   >
                     <div className="relative shrink-0">
                       <Avatar className="w-20 h-20 rounded-3xl border border-white/10 bg-zinc-800 transition-transform group-hover:scale-105 shadow-xl">
                         <AvatarFallback className="bg-zinc-800 text-zinc-400 font-bold text-2xl font-display">{user.handle[1].toUpperCase()}</AvatarFallback>
                       </Avatar>
-                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 border-4 border-zinc-950 rounded-full shadow-lg" />
+                      <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-violet-500 border-4 border-zinc-950 rounded-full shadow-lg" />
                     </div>
                     
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
                         <h4 className="font-bold text-lg tracking-tight truncate font-display">{user.handle}</h4>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg shrink-0">{user.gender}</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-violet-400 bg-violet-500/10 px-2.5 py-1 rounded-lg shrink-0">{user.gender}</span>
                       </div>
                       
                       <div className="flex flex-wrap gap-2 mb-3">
@@ -197,7 +197,7 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
                       </div>
                     </div>
 
-                    <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center transition-all">
+                    <div className="w-12 h-12 bg-violet-500/10 text-violet-400 rounded-2xl flex items-center justify-center transition-all">
                       {!isVerified ? (
                         <Lock className="w-5 h-5 text-zinc-700" />
                       ) : (
@@ -223,19 +223,19 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
           <TabsContent value="info" className="flex-1 p-8 glass-dark rounded-[2.5rem] border border-white/5 mt-0 animate-in fade-in zoom-in-95 duration-500">
             <div className="space-y-8">
               <section>
-                <h5 className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-4">About Venue</h5>
+                <h5 className="text-[11px] font-black text-violet-400 uppercase tracking-[0.2em] mb-4">About Venue</h5>
                 <p className="text-zinc-400 text-sm leading-relaxed font-medium">A cozy spot perfect for working or meeting new people. Famous for their pour-over coffee and minimalist aesthetic. High-speed Wi-Fi and plenty of power outlets.</p>
               </section>
               <section>
-                <h5 className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-4">Community Vibe</h5>
+                <h5 className="text-[11px] font-black text-violet-400 uppercase tracking-[0.2em] mb-4">Community Vibe</h5>
                 <div className="flex flex-wrap gap-3">
                   {['Chill', 'Productive', 'Social', 'Dog Friendly'].map(vibe => (
-                    <Badge key={vibe} variant="outline" className="border-white/10 bg-emerald-500/5 rounded-2xl px-5 py-2 text-emerald-200 font-bold text-[10px] uppercase tracking-widest">{vibe}</Badge>
+                    <Badge key={vibe} variant="outline" className="border-white/10 bg-violet-500/5 rounded-2xl px-5 py-2 text-violet-200 font-bold text-[10px] uppercase tracking-widest">{vibe}</Badge>
                   ))}
                 </div>
               </section>
               <div className="pt-8 border-t border-white/5 flex items-center justify-center gap-3 text-zinc-600">
-                <Info className="w-4 h-4 text-emerald-500" />
+                <Info className="w-4 h-4 text-violet-500" />
                 <span className="text-[10px] font-black uppercase tracking-widest">Presence expires in 82m</span>
               </div>
             </div>
@@ -248,7 +248,7 @@ export const VenueDetail: React.FC<{ venueId: string; navigateTo: (screen: Scree
           onClick={() => navigateTo('QR_SCANNER')} 
           className={`w-full h-16 rounded-[2rem] text-sm font-black shadow-2xl gap-3 border border-white/10 group transition-all active:scale-95 uppercase tracking-widest ${
             isVerified 
-              ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-900/40' 
+              ? 'bg-violet-600 hover:bg-violet-700 text-white shadow-violet-900/40' 
               : 'bg-zinc-100 hover:bg-white text-zinc-950 shadow-zinc-900/40'
           }`}
         >

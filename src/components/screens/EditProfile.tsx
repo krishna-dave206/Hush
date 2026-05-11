@@ -74,7 +74,7 @@ export const EditProfile: React.FC<{ navigateTo: (screen: ScreenType) => void }>
         animate={{ opacity: 1, y: 0 }}
         className="mb-12"
       >
-        <span className="text-emerald-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Identity Configuration</span>
+        <span className="text-violet-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Identity Configuration</span>
         <h1 className="text-4xl font-bold tracking-tight mb-4 font-display text-glow">Edit Profile</h1>
         <p className="text-zinc-500 text-base font-medium leading-relaxed">Update your digital mask to reflect your evolving self.</p>
       </motion.div>
@@ -83,12 +83,12 @@ export const EditProfile: React.FC<{ navigateTo: (screen: ScreenType) => void }>
         <div className="space-y-5">
           <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em] px-2">Core Identity</label>
           <div className="relative group">
-            <User className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 group-focus-within:text-emerald-500 transition-colors" />
+            <User className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 group-focus-within:text-violet-500 transition-colors" />
             <Input
               placeholder="your_handle"
               value={handle}
               onChange={(e) => setHandle(e.target.value)}
-              className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold tracking-tight focus:ring-emerald-500/20 placeholder:text-zinc-800"
+              className="h-16 pl-14 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold tracking-tight focus:ring-violet-500/20 placeholder:text-zinc-800"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -97,13 +97,13 @@ export const EditProfile: React.FC<{ navigateTo: (screen: ScreenType) => void }>
               placeholder="Age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="h-16 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold focus:ring-emerald-500/20 text-center"
+              className="h-16 bg-zinc-900 border-white/5 rounded-3xl text-lg font-bold focus:ring-violet-500/20 text-center"
             />
             <div className="relative">
               <select
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
-                className="w-full h-16 px-6 bg-zinc-900 border-white/5 rounded-3xl text-sm font-bold text-zinc-400 focus:ring-emerald-500/20 outline-none appearance-none cursor-pointer"
+                className="w-full h-16 px-6 bg-zinc-900 border-white/5 rounded-3xl text-sm font-bold text-zinc-400 focus:ring-violet-500/20 outline-none appearance-none cursor-pointer"
               >
                 <option value="" disabled>Gender</option>
                 <option value="Male">Male</option>
@@ -118,7 +118,7 @@ export const EditProfile: React.FC<{ navigateTo: (screen: ScreenType) => void }>
         <div className="space-y-5">
           <div className="flex items-center justify-between px-2">
             <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Interest Tags</label>
-            <Sparkles className="w-4 h-4 text-emerald-500 animate-pulse" />
+            <Sparkles className="w-4 h-4 text-violet-500 animate-pulse" />
           </div>
           <div className="flex flex-wrap gap-2.5">
             {INTERESTS.map(interest => (
@@ -127,7 +127,7 @@ export const EditProfile: React.FC<{ navigateTo: (screen: ScreenType) => void }>
                 onClick={() => toggleInterest(interest)}
                 className={`px-5 py-2.5 rounded-2xl cursor-pointer transition-all border shadow-sm text-[10px] uppercase font-black tracking-widest ${
                   selectedInterests.includes(interest)
-                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/20'
+                    ? 'bg-violet-600 text-white border-violet-500 shadow-violet-900/20'
                     : 'bg-zinc-900 text-zinc-500 border-white/5 hover:bg-zinc-800'
                 }`}
               >

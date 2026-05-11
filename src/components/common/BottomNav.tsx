@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, Search, QrCode, MessageSquare, User, Zap } from 'lucide-react';
+import { Home, Search, QrCode, MessageSquare, User, Zap, Map as MapIcon } from 'lucide-react';
 import { ScreenType } from '../../types/navigation';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -11,6 +11,7 @@ interface BottomNavProps {
 export const BottomNav: React.FC<BottomNavProps> = ({ currentScreen, navigateTo }) => {
   const items = [
     { icon: Home, label: 'Explore', screen: 'HOME' as const, tooltip: "Find Places" },
+    { icon: MapIcon, label: 'Map', screen: 'MAP' as const, tooltip: "Activity Map" },
     { icon: Zap, label: 'Active', screen: 'ACTIVE_USERS' as const, tooltip: "Live Pulse" },
     { icon: QrCode, label: 'Scan', screen: 'QR_SCANNER' as const, isCenter: true, tooltip: "Verify Presence" },
     { icon: MessageSquare, label: 'Chat', screen: 'CHAT_LIST' as const, tooltip: "Conversations" },
@@ -19,7 +20,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentScreen, navigateTo 
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-8 pointer-events-none">
-      <div className="mx-auto max-w-md w-full h-20 bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] grid grid-cols-5 items-center pointer-events-auto shadow-2xl shadow-black/50 overflow-hidden">
+      <div className="mx-auto max-w-lg w-full h-20 bg-zinc-900/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] grid grid-cols-6 items-center pointer-events-auto shadow-2xl shadow-black/50 overflow-hidden">
         <TooltipProvider>
           {items.map((item, i) => (
             <div key={i} className="flex items-center justify-center h-full w-full">
@@ -30,11 +31,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ currentScreen, navigateTo 
                     className={`w-full h-full flex flex-col items-center justify-center transition-all duration-300 ${
                       item.isCenter 
                         ? 'p-0' 
-                        : `${currentScreen === item.screen ? 'text-emerald-400' : 'text-zinc-500 hover:text-zinc-300'}`
+                        : `${currentScreen === item.screen ? 'text-violet-400' : 'text-zinc-500 hover:text-zinc-300'}`
                     }`}
                   >
                     {item.isCenter ? (
-                      <div className="w-14 h-14 bg-emerald-600 rounded-2xl shadow-lg shadow-emerald-600/30 text-white flex items-center justify-center hover:scale-105 transition-transform active:scale-95">
+                      <div className="w-14 h-14 bg-violet-600 rounded-2xl shadow-lg shadow-violet-600/30 text-white flex items-center justify-center hover:scale-105 transition-transform active:scale-95">
                         <item.icon className="w-7 h-7" />
                       </div>
                     ) : (

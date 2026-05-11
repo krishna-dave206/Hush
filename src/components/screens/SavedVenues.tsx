@@ -50,21 +50,21 @@ export const SavedVenues: React.FC<{ navigateTo: (screen: ScreenType, params?: a
       </button>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-12"
-      >
-        <span className="text-rose-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Personal Curation</span>
-        <h1 className="text-4xl font-bold tracking-tight mb-4 font-display text-glow">Saved Venues</h1>
-        <p className="text-zinc-500 text-base font-medium leading-relaxed">Your favorite urban sanctuaries, collected across your journey.</p>
-      </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="mb-12"
+>
+  <span className="text-violet-500 font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Personal Curation</span>
+  <h1 className="text-4xl font-bold tracking-tight mb-4 font-display text-glow">Saved Venues</h1>
+  <p className="text-zinc-500 text-base font-medium leading-relaxed">Your favorite urban sanctuaries, collected across your journey.</p>
+</motion.div>
 
-      {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 space-y-4">
-          <div className="w-12 h-12 border-4 border-rose-500/20 border-t-rose-500 rounded-full animate-spin" />
-          <p className="text-zinc-600 font-black uppercase tracking-widest text-[10px]">Retrieving bookmarks...</p>
-        </div>
-      ) : venues.length === 0 ? (
+{loading ? (
+  <div className="flex flex-col items-center justify-center py-20 space-y-4">
+    <div className="w-12 h-12 border-4 border-violet-500/20 border-t-violet-500 rounded-full animate-spin" />
+    <p className="text-zinc-600 font-black uppercase tracking-widest text-[10px]">Retrieving bookmarks...</p>
+  </div>
+) : venues.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
           <div className="w-20 h-20 bg-zinc-900 rounded-[2rem] flex items-center justify-center border border-white/5">
             <Heart className="w-8 h-8 text-zinc-800" />

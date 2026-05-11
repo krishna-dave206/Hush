@@ -12,8 +12,8 @@ export const SettingsScreen: React.FC<{ navigateTo: (screen: ScreenType, params?
   const { user, signOut } = useAuth();
 
   const menuItems = [
-    { icon: User, label: 'Edit Profile', color: 'text-emerald-500', bg: 'bg-emerald-500/10', action: () => navigateTo('EDIT_PROFILE') },
-    { icon: MessageSquare, label: 'Chat History', color: 'text-teal-500', bg: 'bg-teal-500/10', action: () => navigateTo('CHAT_LIST') },
+    { icon: User, label: 'Edit Profile', color: 'text-violet-500', bg: 'bg-violet-500/10', action: () => navigateTo('EDIT_PROFILE') },
+    { icon: MessageSquare, label: 'Chat History', color: 'text-cyan-500', bg: 'bg-cyan-500/10', action: () => navigateTo('CHAT_LIST') },
     { icon: Heart, label: 'Saved Venues', color: 'text-rose-500', bg: 'bg-rose-500/10', action: () => navigateTo('SAVED_VENUES') },
     { icon: Bell, label: 'Notifications', color: 'text-amber-500', bg: 'bg-amber-500/10', action: () => navigateTo('NOTIFICATIONS') },
     { icon: Shield, label: 'Privacy & Safety', color: 'text-cyan-500', bg: 'bg-cyan-500/10', action: () => toast.info("Security", { description: "Your data is end-to-end encrypted." }) },
@@ -23,12 +23,12 @@ export const SettingsScreen: React.FC<{ navigateTo: (screen: ScreenType, params?
   return (
     <div className="min-h-screen bg-zinc-950 flex flex-col pb-24 font-sans">
       {/* Profile Header */}
-      <div className="pt-20 pb-12 px-8 flex flex-col items-center bg-gradient-to-b from-emerald-950/20 to-zinc-950 border-b border-white/5">
+      <div className="pt-20 pb-12 px-8 flex flex-col items-center bg-gradient-to-b from-violet-950/20 to-zinc-950 border-b border-white/5">
         <div className="relative mb-6">
-          <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full animate-pulse" />
+          <div className="absolute inset-0 bg-violet-500/20 blur-2xl rounded-full animate-pulse" />
           <Avatar className="w-32 h-32 rounded-[2.5rem] border-4 border-zinc-900 shadow-2xl relative z-10 transition-transform hover:scale-105">
             <AvatarImage src={user?.photoURL} />
-            <AvatarFallback className="bg-emerald-600 text-white text-4xl font-bold font-display">{user?.handle[1].toUpperCase()}</AvatarFallback>
+            <AvatarFallback className="bg-violet-600 text-white text-4xl font-bold font-display">{user?.handle[1].toUpperCase()}</AvatarFallback>
           </Avatar>
           <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-white text-black rounded-2xl flex items-center justify-center shadow-xl z-20">
             <User className="w-6 h-6" />
@@ -37,7 +37,7 @@ export const SettingsScreen: React.FC<{ navigateTo: (screen: ScreenType, params?
         <h2 className="text-3xl font-bold tracking-tight mb-2 font-display text-glow">{user?.handle}</h2>
         <div className="flex gap-3 items-center">
             <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em]">{user?.age} y.o</span>
-            <div className="w-1.5 h-1.5 bg-emerald-500/20 rounded-full" />
+            <div className="w-1.5 h-1.5 bg-violet-500/20 rounded-full" />
             <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em]">{user?.gender || 'Secret'}</span>
         </div>
       </div>
