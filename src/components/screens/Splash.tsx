@@ -25,7 +25,7 @@ export const Splash: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
         transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-6 text-4xl font-bold tracking-tighter"
       >
-        CoolCliq
+        Hush
       </motion.h1>
       <motion.p
         initial={{ opacity: 0 }}
