@@ -1,4 +1,4 @@
-# Hush — Anonymous Real-World Social Discovery
+# Hush: Anonymous Real-World Social Discovery
 
 Hush is a location-aware social discovery platform that helps people connect anonymously with others around them in real-world spaces like cafés, restaurants, libraries, events, co-working spaces, airports, campuses, and more.
 
